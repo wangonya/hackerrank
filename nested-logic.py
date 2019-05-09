@@ -1,15 +1,15 @@
 returned = list(map(int, input().strip().split()))
 expected = list(map(int, input().strip().split()))
 
-fine = 0
+check_day = returned[0] - expected[0]
+check_month = returned[1] - expected[1]
+check_year = returned[2] - expected[2]
 
-if returned[2] > expected[2]:
-    fine = 10000
-elif returned[2] == expected[2]:
-    if returned[1] > expected[1]:
-        fine = (returned[1] - expected[1])*500
-    elif returned[1] == expected[1]:
-        if returned[0] > expected[0]:
-            fine = (returned[0] - expected[0])*15
-
-print(fine)
+if (check_day > 0) and (check_month <= 0) and (check_year <= 0):
+    print(check_day*15)
+elif (check_month > 0) and (check_day <= 0) and (check_year <= 0):
+    print(check_month*500)
+elif (check_year) > 0:
+    print(1000)
+else:
+    print(0)
