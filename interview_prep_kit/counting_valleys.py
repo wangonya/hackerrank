@@ -1,26 +1,17 @@
-def counting_valleys(path):
-    print(path)
-    step_counter = 0
-    in_valley_counter = 0
-    for c in path:
-        if c == 'U':
-            step_counter += 1
-        elif c == 'D':
-            step_counter -= 1
+steps = int(input())
+path = input()
 
-        if step_counter < 0:
-            pass
-        elif step_counter > 0:
-            in_valley_counter += 1
+level = 0
+valleys = 0
 
-    return in_valley_counter
+for step in path:
+    if step == 'U':
+        level += 1
+        # we're only interested in sequences coming from 'U' into 0
+        # because they represent coming from a valley into level ground
+        if level == 0:
+            valleys += 1
+    else:
+        level -= 1
 
-
-if __name__ == "__main__":
-    steps = int(input())
-    path = input()
-
-    # slices path into number of steps incase extra was entered
-    path = path[0:steps]
-
-    print(counting_valleys(path))
+print(valleys)
